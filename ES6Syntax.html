@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS ES6 Syntax</title>
+</head>
+<body>
+  <script>
+    // # ES6 Syntax: ECMAScript 2015
+    /*  
+      1. Arrow Functions (=>)
+    */
+
+    // function abc () {
+    //   console.log('abc')
+    // }
+
+    // const abc = function () {
+    //   console.log('abc')
+    // }
+
+    // const abc = () => {
+    //   console.log('abc')
+    // }
+
+    // const abc = () => console.log('abc')
+
+    // const sum = (num1, num2) => num1 + num2
+    // console.log(sum(5, 10))
+
+    // const randomNum = () => 5
+    
+    // console.log(randomNum())
+
+    // const user = () => ({
+    //   firstName: 'Rohit',
+    //   lastName: 'Roy'
+    // })
+    // console.log(user())
+
+    /*  
+      2. Template Literals/Strings (`${}`)
+    */
+
+    // const firstName = 'Ashish'
+    // const lastName = 'Sahu'
+    // const city = 'Mumbai'
+
+    // console.log(`${firstName} ${lastNames} is from ${city}`)
+
+    /*  
+      3. Destructuring (Retrieving properties as variables)
+    */
+
+    // const rohitDetails = {
+    //   firstName: 'Rohit',
+    //   lastName: 'Roy',
+    //   city: 'Bengaluru',
+    //   country: 'India'
+    // }
+
+    // const firstName = rohitDetails.firstName
+    // const lastName = rohitDetails.lastName
+    // const city = rohitDetails.city
+    // const country = rohitDetails.country
+
+    // const {
+    //   firstName,
+    //   lastName,
+    //   city,
+    //   country
+    // } = rohitDetails
+
+    // console.log(`${firstName} ${lastName} is from ${city}, ${country}`)
+
+    // const {
+    //   firstName,
+    //   lastName,
+    //   city: place,
+    //   country
+    // } = rohitDetails
+
+    // console.log(`${firstName} ${lastName} is from ${place}, ${country}`)
+
+    // const displayInfo = ({
+    //     firstName,
+    //     lastName,
+    //     city,
+    //     country
+    // }) => {
+    //   console.log(`${firstName} ${lastName} is from ${city}, ${country}`)
+    // }
+
+    // const piyushDetails = {
+    //   firstName: 'Piyush',
+    //   lastName: 'Jain',
+    //   city: 'Mumbai',
+    //   country: 'India'
+    // }
+
+    // displayInfo(rohitDetails)
+    // displayInfo(piyushDetails)
+
+    
+    /*  
+      4. Spread Operator (...)
+    */
+
+    // const obj1 = {
+    //   a: 5,
+    //   b: 10
+    // }
+    // const obj2 = {
+    //   ...obj1
+    // }
+    // obj1.a = 100
+    // console.log(obj2)
+
+    // const arr1 = [3, 12, 15]
+    // const arr2 = [...arr1]
+    // arr1[1] = 100
+    // console.log(arr2)
+
+    // const obj1 = {
+    //   a: 5,
+    //   b: 10,
+    //   c: 100
+    // }
+    
+    // const obj2 = {
+    //   ...obj1
+    // }
+    // obj2.a = 500
+
+    // const obj2 = {
+    //   ...obj1,
+    //   a: 500,
+    //   c: 1000
+    // }
+
+    // console.log(obj2)
+
+    
+    /*  
+      4. Object Property Assignemnt
+    */
+
+  //  const firstName = 'Vikas'
+  //  const lastName = 'Kumar'
+
+  //  const obj1 = { firstName, lastName }
+
+  //  console.log(obj1)
+  </script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Callbacks</title>
+</head>
+<body>
+  <button onclick="placeOrder()">Place Order</button>
+  <p id="order-status-1"></p>
+  <p id="order-status-2"></p>
+  <script>
+    /* 
+      ## Callbacks 
+
+      1. Syntax
+      abc(function() {
+        console.log("Hello World");
+      })
+
+      abc(() => {
+        console.log("Hello World");
+      })
+    */
+
+    // const abc = (callback) => {
+    //   console.log(1)
+    //   console.log(2)
+    //   callback()
+    //   console.log(3)
+    // }
+
+    // abc(() => {
+    //   console.log("Hello World");
+    // })
+
+    // const fetchUsers = (callback) => {
+    //   setTimeout(() => {
+    //     console.log('Users fetched successfully');
+    //     callback()
+    //   }, 3000)
+    // }
+
+    // fetchUsers(() => {
+    //   console.log("Users processed successfully");
+    // })
+
+    /*
+      1. Order Placed
+      2. After 4 seconds: Restaurant has accepted your order
+      3. After 2 seconds: Preparing your order ...
+      4. After 15 seconds: Packing your order ...
+      5. After 5 seconds: Order handed over to delivery person
+      6: After 12 seconds: Order delivered to your address! Enjoy your meal :)
+    */
+
+    // const placeOrder = () => {
+    //   console.log("ORDER PLACED")
+
+    //   setTimeout(() => {
+    //     console.log('RESTAURANT ACCEPTED ORDER')
+    //   }, 4000)
+
+    //   setTimeout(() => {
+    //     console.log('PREPARING YOUR ORDER')
+    //   }, 2000)
+
+    //   setTimeout(() => {
+    //     console.log('PACKING YOUR ORDER')
+    //   }, 15000)
+
+    //   setTimeout(() => {
+    //     console.log('ORDER HANDED OVER TO DELIVERY PERSON')
+    //   }, 5000)
+
+    //   setTimeout(() => {
+    //     console.log('ORDER DELIVERED TO YOUR ADDRESS! ENJOY YOUR MEAL :)')
+    //   }, 12000)
+    // }
+
+    /* Callback Hell */
+    // const placeOrder = () => {
+    //   console.log("ORDER PLACED")
+    //   setTimeout(() => {
+    //     console.log('RESTAURANT ACCEPTED ORDER')
+    //     setTimeout(() => {
+    //       console.log('PREPARING YOUR ORDER')
+    //       setTimeout(() => {
+    //         console.log('PACKING YOUR ORDER')
+    //         setTimeout(() => {
+    //           console.log('ORDER HANDED OVER TO DELIVERY PERSON')
+    //           setTimeout(() => {
+    //             console.log('ORDER DELIVERED TO YOUR ADDRESS! ENJOY YOUR MEAL :)')
+    //           }, 12000)
+    //         }, 5000)
+    //       }, 15000)
+    //     }, 2000)
+    //   }, 4000)
+    // }
+
+    const orderAccepted = (count) => new Promise((resolve, reject) => {
+      setTimeout(() => {
+        document.getElementById('order-status' + '-' + count).innerText=`User ${count}: RESTAURANT ACCEPTED ORDER`
+        resolve(count)
+      }, 4000)
+    })
+
+    const preparingOrder = (count) => new Promise((resolve, reject) => {
+      setTimeout(() => {
+        document.getElementById('order-status' + '-' + count).innerText=`User ${count}: PREPARING YOUR ORDER`
+        resolve(count)
+      }, 2000)
+    })
+
+    const packingOrder = (count) => new Promise((resolve, reject) => {
+      setTimeout(() => {
+        document.getElementById('order-status' + '-' + count).innerText=`User ${count}: PACKING YOUR ORDER`
+        resolve(count)
+      }, 15000)
+    })
+
+    const orderHandedOver = (count) => new Promise((resolve, reject) => {
+      setTimeout(() => {
+        document.getElementById('order-status' + '-' + count).innerText=`User ${count}: ORDER HANDED OVER TO DELIVERY PERSON`
+        resolve(count)
+      }, 5000)
+    })
+
+    const orderDelivered = (count) => new Promise((resolve, reject) => {
+      setTimeout(() => {
+        document.getElementById('order-status' + '-' + count).innerText=`User ${count}:ORDER DELIVERED TO YOUR ADDRESS! ENJOY YOUR MEAL :)`
+        resolve(count)
+      }, 12000)
+    })
+
+    let count = 0;
+    const placeOrder = () => {
+      count = count + 1
+
+      document.getElementById('order-status' + '-' + count).innerText=`User ${count}: ORDER PLACED`
+
+      orderAccepted(count)
+        .then(preparingOrder)
+        .then(packingOrder)
+        .then(orderHandedOver)
+        .then(orderDelivered)
+        .then(() => document.getElementById('order-status' + '-' + count).innerText=`User ${count}: PLEASE ORDER AGAIN :)`)
+        .catch(() => console.log('OOPS! SOMETHING WENT WRONG :('))
+    }
+
+    // const placeOrder = async () => {
+    //   try {
+    //     count = count + 1
+    //     document.getElementById('order-status').innerText='ORDER PLACED'
+    //     await orderAccepted()
+    //     await preparingOrder()
+    //     await packingOrder()
+    //     await orderHandedOver()
+    //     await orderDelivered()
+    //     document.getElementById('order-status').innerText='PLEASE ORDER AGAIN :)'
+    //   } catch (error) {
+    //     console.log('OOPS! SOMETHING WENT WRONG :(')
+    //   }
+    // }
+
+
+  </script>
+</body>
+</html>
+
+
+<!--
+  # Promise Functions
+    const promise1 = () => new Promise((resolve, reject) => {
+      resolve()
+    })
+
+    promise1()
+      .then(() => {})
+      .catch(() => {})
+
+  # Promise Chaining
+    promise1
+      .then(() => { return new Promise(...)})
+      .then(() => {})
+      .catch(() => {})
+
+  # JS Engine
+  - Callstack
+  - Web APIs
+  - Task Queues
+  - Event Loop
+-->
